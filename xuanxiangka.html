@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body{font-family: "MIcrosoft YaHei",serif;}
+        body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+        ol,ul,li{margin:0;padding:0;list-style:none;}
+        img{border:none;}
+
+        #wrap{
+            width: 820px;
+            height: 390px;
+            margin: 50px auto;
+            user-select: none;
+        }
+        #img{
+            position: relative;
+            width: 100%;
+            height:340px; 
+        }
+        #img ul{
+            width: 100%;
+            height: 100%;
+        }
+        #img ul li{
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #img li.show{
+            display: block;
+        } 
+        #tab{
+            overflow: hidden;
+            width: 100%;
+            height: 50px;
+        }
+        #tab ul{
+            width: 110%;
+            height: 100%;
+        }
+        #tab li{
+            float: left;
+            width: 19%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color:#eee;
+            font-size: 16px;
+            background-color: #000;
+            cursor: pointer;
+           
+
+        }
+        #tab li.active{
+            background-color: #303030;
+            color: #e9c06c;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <!--图片部分-->
+        <div id="img">
+            <ul>
+                <li class="show"><a href=""><img src="./img/6.jpg" alt=""></a></li>
+                <li><a href=""><img src="./img/7.jpg" alt=""></a></li>
+                <li><a href=""><img src="./img/8.jpg" alt=""></a></li>
+                <li><a href=""><img src="./img/9.jpg" alt=""></a></li>
+                <li><a href=""><img src="./img/10.jpg" alt=""></a></li>
+            </ul>
+        </div>
+        <!--按钮部分-->
+        <div id="tab">
+            <ul>
+                <li class="active">孙悟空</li>
+                <li>程咬金</li>
+                <li>阿珂</li>
+                <li>狄仁杰</li>
+                <li>娜可露露</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        
+        let aTabLi = document.querySelectorAll("#tab ul li"),
+            aImgLi = document.querySelectorAll("#img ul li"),
+            len = aTabLi.length;
+            let goudan = 0;
+            //给Tab的Li添加点击事件
+            for(let i=0; i< len; i++){
+                aTabLi[i].onclick =function(){
+                    //当不重复点击的时候才触发执行
+                    if(goudan !== i){
+                        
+                        //清除当前显示的样式
+                    aTabLi[goudan].className ="";
+                    aImgLi[goudan].className ="";
+                    //当前显示的序号更变
+                    goudan = i;
+                    //为当前点击的事件添加样式
+                    aTabLi[goudan].className = "active";
+                    aImgLi[goudan].className ="show";
+                    }
+                    
+                };
+            }
+    </script>
+</body>
+</html>
